@@ -24,6 +24,24 @@ void	incoming_arg(t_data *data)
 		radix_sort(data);
 }
 
+int	find_min_number(int *arr, size_t size, long start)
+{
+	size_t	i;
+	int		second;
+
+	i = -1;
+	while (++i < size)
+		if (arr[i] > start)
+			second = i;
+	i = -1;
+	while (++i < size)
+	{
+		if (arr[i] > start && arr[i] < arr[second])
+			second = i;
+	}
+	return (second);
+}
+
 void	index_a(t_data *data)
 {
 	int		i;
@@ -42,24 +60,6 @@ void	index_a(t_data *data)
 	}
 	free(data->a);
 	data->a = temp;
-}
-
-int	find_min_number(int *arr, size_t size, long start)
-{
-	size_t	i;
-	int		second;
-
-	i = -1;
-	while (++i < size)
-		if (arr[i] > start)
-			second = i;
-	i = -1;
-	while (++i < size)
-	{
-		if (arr[i] > start && arr[i] < arr[second])
-			second = i;
-	}
-	return (second);
 }
 
 int	same_number_cont(t_data *x)
